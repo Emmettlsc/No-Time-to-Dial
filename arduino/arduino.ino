@@ -12,8 +12,9 @@ WebSocketsClient webSocket;
 int status = WL_IDLE_STATUS;
 
 #define USE_SSL         false
-#define WS_SERVER           "44.207.82.113"
-#define WS_PORT             8080
+// #define WS_SERVER           "ec.bazzled.com"
+#define WS_SERVER           "54.153.78.201"
+#define WS_PORT             80
 
 char ssid[] = "UCLA_WEB";
 char pass[] = "";
@@ -88,6 +89,7 @@ void setup()
 
 
 void loop() {
+    int letterCodeLength = letterCode.length();
     webSocket.loop();
 
     static unsigned long lastSendTime = 0;
@@ -147,8 +149,8 @@ void loop() {
             } 
           }
 
-        unsigned long stopTime = millis();
-        unsigned long pauseTime = stopTime - startTime;
+        // unsigned long stopTime = millis();
+        // unsigned long pauseTime = stopTime - startTime;
 
 
 
@@ -161,10 +163,10 @@ void loop() {
           startTime = millis();
           letterCode = "";
           
-          String jsonMessage = "{\"type\": \"char\", \"value\": " + String(result) + "}";
+          // String jsonMessage = "{\"type\": \"char\", \"value\": " + String(result) + "}";
 
           //snd msg via websocket
-          webSocket.sendTXT(jsonMessage);
+          webSocket.sendTXT(String(result));
         }
 
 

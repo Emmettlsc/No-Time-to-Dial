@@ -1,8 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
@@ -20,7 +22,7 @@ var upgrader = websocket.Upgrader{
 type client struct {
 	conn *websocket.Conn
 	send chan []byte
-	//id   uuid.UUID
+	id   uuid.UUID
 }
 
 var (
@@ -28,6 +30,12 @@ var (
 	broadcast = make(chan []byte)      // Broadcast channel
 	mu        sync.Mutex               // Mutex for clients
 )
+
+// ClientMessage represents a message along with the client's ID
+type ClientMessage struct {
+	ID      string `json:"id"`
+	Message string `json:"message"`
+}
 
 func echo(w http.ResponseWriter, r *http.Request) {
 	conn, err := upgrader.Upgrade(w, r, nil)
@@ -37,9 +45,9 @@ func echo(w http.ResponseWriter, r *http.Request) {
 	}
 	defer conn.Close()
 
-	//tmpid, _ := uuid.NewUUID()
+	tmpid, _ := uuid.NewUUID()
 
-	cl := &client{conn: conn, send: make(chan []byte, 256)}
+	cl := &client{conn: conn, send: make(chan []byte, 256), id: tmpid}
 	mu.Lock()
 	clients[cl] = true
 	mu.Unlock()
@@ -54,7 +62,17 @@ func echo(w http.ResponseWriter, r *http.Request) {
 			}
 			break
 		}
-		broadcast <- message
+		//create JSON obj w/ ID and message (letter in case of morse)
+		clientMessage := ClientMessage{
+			ID:      cl.id.String(),
+			Message: string(message),
+		}
+		jsonMessage, err := json.Marshal(clientMessage)
+		if err != nil {
+			log.Printf("json marshal error: %v", err)
+			continue
+		}
+		broadcast <- jsonMessage
 	}
 
 	mu.Lock()

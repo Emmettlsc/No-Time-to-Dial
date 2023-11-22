@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var model: ItemListModel
-    
+
     var body: some View {
         List {
-            ForEach($model.items) { $item in
-                Text(item.description)
+            ForEach(model.items.keys.sorted(), id: \.self) { key in
+                Section(header: Text("Sender: \(key)")) {
+                    Text(model.items[key] ?? "")
+                }
             }
             
             if model.items.isEmpty {
@@ -24,6 +26,7 @@ struct ContentView: View {
         .navigationTitle("Connections")
     }
 }
+
 
 #Preview {
     ContentView()

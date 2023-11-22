@@ -20,6 +20,11 @@ struct No_Time_To_Dial_Watch_AppApp: App {
     }
 }
 
+struct ParsedMessage: Identifiable, Decodable, Hashable {
+    let id: UUID
+    var message: String
+}
+
 
 struct ListItem: Identifiable, Hashable {
     let id = UUID()
@@ -32,19 +37,31 @@ struct ListItem: Identifiable, Hashable {
 }
 
 class ItemListModel: NSObject, ObservableObject {
-    @Published var items = [ListItem]()
+    @Published var items = [String: String]()
+
     private var websocketManager: WebSocketManager?
 
     override init() {
         super.init()
-        websocketManager = WebSocketManager { [weak self] receivedData in
-//add recieved data string to items list
+        websocketManager = WebSocketManager { [weak self] receivedJSON in
+            guard let self = self,
+                  let data = receivedJSON.data(using: .utf8),
+                  let parsedMessage = try? JSONDecoder().decode(ParsedMessage.self, from: data) else {
+                return
+            }
             DispatchQueue.main.async {
-                self?.items.append(ListItem(receivedData))
+                // Accumulate messages by ID
+                if var existingMessage = self.items[parsedMessage.id.uuidString] {
+                    existingMessage += parsedMessage.message
+                    self.items[parsedMessage.id.uuidString] = existingMessage
+                } else {
+                    self.items[parsedMessage.id.uuidString] = parsedMessage.message
+                }
             }
         }
         websocketManager?.connect()
     }
+
 
     deinit {
         websocketManager?.disconnect()
@@ -54,14 +71,16 @@ class ItemListModel: NSObject, ObservableObject {
 class WebSocketManager {
     private var webSocketTask: URLSessionWebSocketTask?
     private let onDataReceived: (String) -> Void
-    private var url = URL(string: "ws://localhost:8080/echo")!
+//    private var url = URL(string: "ws://52.202.91.145:8080/echo")!
 
+//    private var url = URL(string: "ws://localhost:8080/echo")!
+    private var url = URL(string: "wss://ec.bazzled.com/echo")!
     init(onDataReceived: @escaping (String) -> Void) {
         self.onDataReceived = onDataReceived
     }
     
     func connect() {
-        print("GOT HERE")
+//        print("GOT HERE")
         let session = URLSession(configuration: .default)
         webSocketTask = session.webSocketTask(with: url)
         webSocketTask?.resume()
@@ -82,6 +101,7 @@ class WebSocketManager {
                     }
                 case .data(let data):
                     print("Received data: \(data)")
+                
                 @unknown default:
                     fatalError()
                 }

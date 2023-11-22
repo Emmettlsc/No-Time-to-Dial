@@ -56,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		030C4F942B0B4A8A00190B77 /* No-Time-To-Dial-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "No-Time-To-Dial-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0320EB292B09EBA9005DA3E0 /* No Time To Dial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No Time To Dial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0320EB2F2B09EBA9005DA3E0 /* No Time To Dial Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No Time To Dial Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0320EB342B09EBA9005DA3E0 /* No_Time_To_DialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = No_Time_To_DialApp.swift; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		0320EB332B09EBA9005DA3E0 /* No Time To Dial Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				030C4F942B0B4A8A00190B77 /* No-Time-To-Dial-Watch-App-Info.plist */,
 				0320EB342B09EBA9005DA3E0 /* No_Time_To_DialApp.swift */,
 				0320EB362B09EBA9005DA3E0 /* ContentView.swift */,
 				0320EB382B09EBAA005DA3E0 /* Assets.xcassets */,
@@ -476,6 +478,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"No Time To Dial Watch App/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "No-Time-To-Dial-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "No Time To Dial";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -505,6 +508,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"No Time To Dial Watch App/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "No-Time-To-Dial-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "No Time To Dial";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
