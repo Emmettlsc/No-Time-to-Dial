@@ -1,0 +1,24 @@
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\bleDevice.mc"; @line = 1; ]
+using Toybox.BluetoothLowEnergy as :Ble;
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\bleDevice.mc"; @line = 3; ]
+class BleDevice extends Ble.BleDelegate{
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\bleDevice.mc"; @line = 3; ]
+    <init> {
+    }
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\bleDevice.mc"; @line = 3; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\bleDevice.mc"; @line = 5; ]
+    function initialize() as Void {
+C_Projects_ucla_eceM119_No_Time_to_Dial_Demo_source_bleDevice_mc_5_26_start:
+[ "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\bleDevice.mc" 6 8 ]
+        %tmp.2 = getv ? :BleDelegate;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+C_Projects_ucla_eceM119_No_Time_to_Dial_Demo_source_bleDevice_mc_5_26_stop:
+    }
+}
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\bleDevice.mc"; @line = 1; ]
+<init> {
+}

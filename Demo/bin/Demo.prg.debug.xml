@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="1" lineNum="44" parent="globals" pc="268435460" symbol="getApp"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="1" lineNum="45" parent="globals" pc="268435470" symbol="getApp"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\DataField.mc" id="2" lineNum="4" parent="globals/DataField" pc="268435486" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\DataField.mc" id="3" lineNum="12" parent="globals/DataField" pc="268435505" symbol="compute"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\DataField.mc" id="3" lineNum="14" parent="globals/DataField" pc="268435507" symbol="compute"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\DataField.mc" id="4" lineNum="7" parent="globals/DataField" pc="268435513" symbol="initialize"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\DataField.mc" id="4" lineNum="8" parent="globals/DataField" pc="268435515" symbol="initialize"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\DataField.mc" id="4" lineNum="9" parent="globals/DataField" pc="268435533" symbol="initialize"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\bin\\gen\\006-B3282-00\\source\\Rez.mcgen" id="5" lineNum="7" parent="globals/Rez" pc="268435544" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\bleDevice.mc" id="6" lineNum="3" parent="globals/BleDevice" pc="268435563" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\bleDevice.mc" id="7" lineNum="5" parent="globals/BleDevice" pc="268435582" symbol="initialize"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\bleDevice.mc" id="7" lineNum="6" parent="globals/BleDevice" pc="268435584" symbol="initialize"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2View.mc" id="8" lineNum="6" parent="globals/Demo2View" pc="268435603" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2View.mc" id="11" lineNum="13" parent="globals/Demo2View" pc="268435622" symbol="onLayout"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2View.mc" id="11" lineNum="14" parent="globals/Demo2View" pc="268435624" symbol="onLayout"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2View.mc" id="13" lineNum="8" parent="globals/Demo2View" pc="268435666" symbol="initialize"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2View.mc" id="13" lineNum="9" parent="globals/Demo2View" pc="268435668" symbol="initialize"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2View.mc" id="15" lineNum="24" parent="globals/Demo2View" pc="268435687" symbol="onUpdate"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2View.mc" id="15" lineNum="26" parent="globals/Demo2View" pc="268435691" symbol="onUpdate"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2View.mc" id="15" lineNum="27" parent="globals/Demo2View" pc="268435708" symbol="onUpdate"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2View.mc" id="15" lineNum="28" parent="globals/Demo2View" pc="268435782" symbol="onUpdate"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2View.mc" id="15" lineNum="29" parent="globals/Demo2View" pc="268435810" symbol="onUpdate"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2View.mc" id="15" lineNum="32" parent="globals/Demo2View" pc="268435824" symbol="onUpdate"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="16" lineNum="9" parent="globals/Demo2App" pc="268435849" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="17" lineNum="17" parent="globals/Demo2App" pc="268435868" symbol="onStart"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="17" lineNum="19" parent="globals/Demo2App" pc="268435870" symbol="onStart"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="17" lineNum="20" parent="globals/Demo2App" pc="268435904" symbol="onStart"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="17" lineNum="21" parent="globals/Demo2App" pc="268435928" symbol="onStart"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="18" lineNum="38" parent="globals/Demo2App" pc="268435947" symbol="getInitialView"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="18" lineNum="39" parent="globals/Demo2App" pc="268435949" symbol="getInitialView"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="19" lineNum="12" parent="globals/Demo2App" pc="268435998" symbol="initialize"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="19" lineNum="13" parent="globals/Demo2App" pc="268436000" symbol="initialize"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="20" lineNum="25" parent="globals/Demo2App" pc="268436019" symbol="onStop"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\source\\Demo2App.mc" id="20" lineNum="26" parent="globals/Demo2App" pc="268436021" symbol="onStop"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\bin\\gen\\006-B3282-00\\source\\Rez.mcgen" id="21" lineNum="19" parent="globals/Rez/Layouts" pc="268436040" symbol="WatchFace"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\bin\\gen\\006-B3282-00\\source\\Rez.mcgen" id="21" lineNum="20" parent="globals/Rez/Layouts" pc="268436052" symbol="WatchFace"/>
+        <entry filename="C:\\Projects\\ucla\\eceM119\\No-Time-to-Dial\\Demo\\bin\\gen\\006-B3282-00\\source\\Rez.mcgen" id="21" lineNum="22" parent="globals/Rez/Layouts" pc="268436187" symbol="WatchFace"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry id="7" module="true" symbol="globals/Rez/Menus"/>
+        <entry id="10" object="true" symbol="Demo2App"/>
+        <entry field="true" id="15" symbol="&lt;globals/Demo2App/&lt;&gt;bleDevice&gt;"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry field="true" id="17" symbol="AppName"/>
+        <entry id="8" module="true" symbol="globals/Rez/Strings"/>
+        <entry id="8388772" module="true" object="true" symbol="Fonts"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry id="2" module="true" symbol="globals/Rez"/>
+        <entry id="9" object="true" symbol="BleDevice"/>
+        <entry id="8389024" object="true" symbol="DataField"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry id="8389375" method="true" object="true" symbol="WatchFace"/>
+        <entry field="true" id="8389065" symbol="locY"/>
+        <entry field="true" id="8389064" symbol="locX"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry id="8389348" symbol="font"/>
+        <entry id="14" module="true" symbol="Menus"/>
+        <entry id="8389275" method="true" symbol="getApp"/>
+        <entry id="6" module="true" symbol="globals/Rez/Layouts"/>
+        <entry id="8389122" method="true" symbol="onLayout"/>
+        <entry id="8389376" method="true" symbol="onEnterSleep"/>
+        <entry field="true" id="8389063" symbol="identifier"/>
+        <entry id="8389349" symbol="justification"/>
+        <entry id="8389137" method="true" symbol="compute"/>
+        <entry id="5" module="true" symbol="globals/Rez/JsonData"/>
+        <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
+        <entry id="11" object="true" symbol="Demo2View"/>
+        <entry id="8389377" method="true" symbol="onExitSleep"/>
+        <entry id="8388644" module="true" symbol="System"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry id="8390088" module="true" object="true" symbol="JsonData"/>
+        <entry field="true" id="16" symbol="LauncherIcon"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry id="8389123" method="true" symbol="onShow"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry field="true" id="12" symbol="&lt;globals/DataField/&lt;&gt;bleDevice&gt;"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry id="8389347" symbol="color"/>
+        <entry id="13" module="true" symbol="Layouts"/>
+        <entry id="4" module="true" symbol="globals/Rez/Fonts"/>
+        <entry id="8389125" method="true" symbol="onHide"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+    </symbolTable>
+    <localVars>
+        <entry arg="true" endPc="268435512" name="info" stackId="1" startPc="268435505"/>
+        <entry arg="true" endPc="268435543" name="device" stackId="1" startPc="268435513"/>
+        <entry arg="true" endPc="268435665" name="dc" stackId="1" startPc="268435622"/>
+        <entry arg="true" endPc="268435848" name="dc" stackId="1" startPc="268435687"/>
+        <entry endPc="268435847" name="clockTime" stackId="2" startPc="268435691"/>
+        <entry endPc="268435847" name="timeString" stackId="3" startPc="268435691"/>
+        <entry endPc="268435847" name="view" stackId="4" startPc="268435691"/>
+        <entry arg="true" endPc="268435946" name="state" stackId="1" startPc="268435868"/>
+        <entry arg="true" endPc="268436039" name="state" stackId="1" startPc="268436019"/>
+        <entry arg="true" endPc="268436203" name="dc" stackId="1" startPc="268436040"/>
+        <entry endPc="268436203" name="rez_cmp_local_text_TimeLabel" stackId="2" startPc="268436052"/>
+    </localVars>
+    <annotations>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
+    </annotations>
+    <dataEntryOffsetMappings>
+        <dataEntry label="globals" offset="87" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/DataField" offset="174" parentId="globals" symbolId="DataField" type="class"/>
+        <dataEntry label="globals/Rez" offset="237" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/BleDevice" offset="316" parentId="globals" symbolId="BleDevice" type="class"/>
+        <dataEntry label="globals/Demo2View" offset="363" parentId="globals" symbolId="Demo2View" type="class"/>
+        <dataEntry label="globals/Demo2App" offset="458" parentId="globals" symbolId="Demo2App" type="class"/>
+        <dataEntry label="globals/Rez/Drawables" offset="537" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Layouts" offset="576" parentId="Rez" symbolId="Layouts" type="module"/>
+        <dataEntry label="globals/Rez/Menus" offset="615" parentId="Rez" symbolId="Menus" type="module"/>
+        <dataEntry label="globals/Rez/Fonts" offset="646" parentId="Rez" symbolId="Fonts" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="677" parentId="Rez" symbolId="Strings" type="module"/>
+        <dataEntry label="globals/Rez/JsonData" offset="716" parentId="Rez" symbolId="JsonData" type="module"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" endPc="268435485" name="getApp" startPc="268435460">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435504" name="&lt;init&gt;" parent="DataField" startPc="268435486">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435512" name="compute" parent="DataField" startPc="268435505">
+            <param id="info"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435543" name="initialize" parent="DataField" startPc="268435513">
+            <param id="device"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435562" name="&lt;init&gt;" parent="Rez" startPc="268435544">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435581" name="&lt;init&gt;" parent="BleDevice" startPc="268435563">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435602" name="initialize" parent="BleDevice" startPc="268435582">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435621" name="&lt;init&gt;" parent="Demo2View" startPc="268435603">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onExitSleep" parent="Demo2View">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onShow" parent="Demo2View">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435665" name="onLayout" parent="Demo2View" startPc="268435622">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onEnterSleep" parent="Demo2View">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435686" name="initialize" parent="Demo2View" startPc="268435666">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onHide" parent="Demo2View">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435848" name="onUpdate" parent="Demo2View" startPc="268435687">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435867" name="&lt;init&gt;" parent="Demo2App" startPc="268435849">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435946" name="onStart" parent="Demo2App" startPc="268435868">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435997" name="getInitialView" parent="Demo2App" startPc="268435947">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436018" name="initialize" parent="Demo2App" startPc="268435998">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436039" name="onStop" parent="Demo2App" startPc="268436019">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Drawables">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Layouts">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Menus">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Fonts">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Strings">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="JsonData">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436203" name="WatchFace" parent="Layouts" startPc="268436040">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>

@@ -1,0 +1,40 @@
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc"; @line = 1; ]
+using Toybox.WatchUi;
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc"; @line = 2; ]
+using Toybox.System;
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc"; @line = 4; ]
+class DataField extends WatchUi.SimpleDataField{
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc"; @line = 4; ]
+    <init> {
+    }
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc"; @line = 4; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc"; @line = 5; @position = 16; ]
+    private
+    var bleDevice;
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc"; @line = 7; ]
+    function initialize(device) as Void {
+C_Projects_ucla_eceM119_No_Time_to_Dial_Demo_source_DataField_mc_7_32_start:
+[ "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc" 8 8 ]
+        %tmp.2 = getv ? :SimpleDataField;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc" 9 8 ]
+        %tmp.5 = lgetv %device;
+        putv self :bleDevice %tmp.5;
+C_Projects_ucla_eceM119_No_Time_to_Dial_Demo_source_DataField_mc_7_32_stop:
+    }
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc"; @line = 12; ]
+    function compute(info) {
+C_Projects_ucla_eceM119_No_Time_to_Dial_Demo_source_DataField_mc_12_27_start:
+[ "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc" 14 8 ]
+        %tmp.1 = "test";
+        ret %tmp.1;
+C_Projects_ucla_eceM119_No_Time_to_Dial_Demo_source_DataField_mc_12_27_stop:
+    }
+}
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\source\DataField.mc"; @line = 1; ]
+<init> {
+}

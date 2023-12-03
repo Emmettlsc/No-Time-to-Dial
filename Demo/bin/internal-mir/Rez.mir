@@ -1,48 +1,48 @@
-[ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 1; ]
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 1; ]
 import Toybox.Lang;
-[ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 2; ]
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 2; ]
 using Toybox.WatchUi;
-[ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 3; ]
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 3; ]
 using Toybox.WatchUi as :Ui;
-[ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 4; ]
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 4; ]
 using Toybox.Graphics;
-[ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 5; ]
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 5; ]
 using Toybox.Graphics as :Gfx;
-[ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 7; ]
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 7; ]
 module Rez {
-    [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 7; ]
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 7; ]
     <init> {
     }
-    [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 8; ]
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 8; ]
     module Drawables {
-        [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 8; ]
+        [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 8; ]
         <init> {
         }
-        [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 9; @position = 27; initialized = true; ]
+        [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 9; @position = 27; initialized = true; ]
         var LauncherIcon as Symbol;
     }
-    [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 12; ]
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 12; ]
     module Fonts {
-        [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 12; ]
+        [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 12; ]
         <init> {
         }
     }
-    [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 15; ]
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 15; ]
     module JsonData {
-        [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 15; ]
+        [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 15; ]
         <init> {
         }
     }
-    [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 18; ]
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 18; ]
     module Layouts {
-        [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 18; ]
+        [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 18; ]
         <init> {
         }
-        [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 19; ]
+        [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 19; ]
         function WatchFace(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
-C_Projects_ucla_eceM119_final_project_Demo2_bin_gen_006_B3282_00_source_Rez_mcgen_19_73_start:
-[ "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen" 20 12 ]
-            [ "C_Projects_ucla_eceM119_final_project_Demo2_bin_gen_006_B3282_00_source_Rez_mcgen_19_73_start" "C_Projects_ucla_eceM119_final_project_Demo2_bin_gen_006_B3282_00_source_Rez_mcgen_19_73_stop" ]
+C_Projects_ucla_eceM119_No_Time_to_Dial_Demo_bin_gen_006_B3282_00_source_Rez_mcgen_19_73_start:
+[ "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen" 20 12 ]
+            [ "C_Projects_ucla_eceM119_No_Time_to_Dial_Demo_bin_gen_006_B3282_00_source_Rez_mcgen_19_73_start" "C_Projects_ucla_eceM119_No_Time_to_Dial_Demo_bin_gen_006_B3282_00_source_Rez_mcgen_19_73_stop" ]
             %rez_cmp_local_text_TimeLabel.1 = local;
             %tmp.3 = getm $.Toybox.WatchUi;
             %tmp.4 = getv function ? %tmp.3 :Text;
@@ -86,30 +86,30 @@ C_Projects_ucla_eceM119_final_project_Demo2_bin_gen_006_B3282_00_source_Rez_mcge
             %tmp.48 = aputv %tmp.47 %tmp.44 %tmp.46;
             %tmp.1 = newc %tmp.4 (%tmp.48);
             lputv %rez_cmp_local_text_TimeLabel.1 %tmp.1;
-[ "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen" 22 12 ]
+[ "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen" 22 12 ]
             %tmp.49 = newa Array<WatchUi.Drawable> 1;
             %tmp.51 = lgetv %rez_cmp_local_text_TimeLabel.1;
             %tmp.52 = dup %tmp.49;
             %tmp.53 = aputv %tmp.52 0 %tmp.51;
             ret %tmp.53;
-C_Projects_ucla_eceM119_final_project_Demo2_bin_gen_006_B3282_00_source_Rez_mcgen_19_73_stop:
+C_Projects_ucla_eceM119_No_Time_to_Dial_Demo_bin_gen_006_B3282_00_source_Rez_mcgen_19_73_stop:
         }
     }
-    [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 26; ]
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 26; ]
     module Menus {
-        [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 26; ]
+        [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 26; ]
         <init> {
         }
     }
-    [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 29; ]
+    [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 29; ]
     module Strings {
-        [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 29; ]
+        [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 29; ]
         <init> {
         }
-        [ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 30; @position = 27; initialized = true; ]
+        [ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 30; @position = 27; initialized = true; ]
         var AppName as Symbol;
     }
 }
-[ @file = "C:\Projects\ucla\eceM119\final_project\Demo2\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 1; ]
+[ @file = "C:\Projects\ucla\eceM119\No-Time-to-Dial\Demo\bin\gen\006-B3282-00\source\Rez.mcgen"; @line = 1; ]
 <init> {
 }
