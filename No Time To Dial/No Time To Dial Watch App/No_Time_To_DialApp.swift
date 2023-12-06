@@ -31,6 +31,11 @@ struct TimestampedMessage: Identifiable, Hashable {
     let timestamp: Date
 }
 
+struct NameUpdate: Decodable {
+    let uuid: UUID
+    let name: String
+}
+
 //struct ParsedMessage: Identifiable, Decodable, Hashable {
 //    let id: UUID
 //    var deviceName: String
@@ -49,30 +54,34 @@ struct ListItem: Identifiable, Hashable {
 }
 
 class ItemListModel: NSObject, ObservableObject {
-    @Published var devices = [String: [TimestampedMessage]]() // Updated to use TimestampedMessage
+    @Published var devices = [String: [TimestampedMessage]]() // Maps UUIDs to their messages
+    @Published var deviceNames = [String: String]() // Maps UUIDs to custom names
 
     private var websocketManager: WebSocketManager?
 
     override init() {
         super.init()
         websocketManager = WebSocketManager { [weak self] receivedJSON in
-            guard let self = self,
-                  let data = receivedJSON.data(using: .utf8),
-                  let parsedMessage = try? JSONDecoder().decode(ParsedMessage.self, from: data) else {
-                return
-            }
-            let timestampedMessage = TimestampedMessage(message: parsedMessage.message, timestamp: Date())
-            
             DispatchQueue.main.async {
-                let deviceUUID = parsedMessage.id.uuidString // Use UUID as key
-                var messages = self.devices[deviceUUID, default: []]
-                messages.insert(timestampedMessage, at: 0) // Insert new message at the beginning
-                self.devices[deviceUUID] = messages
+                self?.handleReceivedJSON(receivedJSON)
             }
         }
         websocketManager?.connect()
     }
 
+    private func handleReceivedJSON(_ receivedJSON: String) {
+        guard let data = receivedJSON.data(using: .utf8) else { return }
+
+        if let parsedMessage = try? JSONDecoder().decode(ParsedMessage.self, from: data) {
+            let timestampedMessage = TimestampedMessage(message: parsedMessage.message, timestamp: Date())
+            let deviceUUID = parsedMessage.id.uuidString
+            var messages = self.devices[deviceUUID, default: []]
+            messages.insert(timestampedMessage, at: 0) // Insert new message at the beginning
+            self.devices[deviceUUID] = messages
+        } else if let nameUpdate = try? JSONDecoder().decode(NameUpdate.self, from: data) {
+            self.deviceNames[nameUpdate.uuid.uuidString] = nameUpdate.name
+        }
+    }
 
     deinit {
         websocketManager?.disconnect()

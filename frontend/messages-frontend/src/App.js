@@ -34,19 +34,23 @@ function App() {
 
   useEffect(() => {
     webSocket = new WebSocket('ws://184.72.14.50:8080/ws');
-
+  
     webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data);
-      const timestamp = Date.now();
-      setMessages(prevMessages => ({
-        ...prevMessages,
-        [message.id]: {
-          latestMessage: { text: message.message, timestamp },
-          messages: [{ text: message.message, timestamp }, ...(prevMessages[message.id]?.messages || [])]
-        }
-      }));
+  
+      // Check if the message contains 'id' and 'message'
+      if (message.hasOwnProperty('id') && message.hasOwnProperty('message')) {
+        const timestamp = Date.now();
+        setMessages(prevMessages => ({
+          ...prevMessages,
+          [message.id]: {
+            latestMessage: { text: message.message, timestamp },
+            messages: [{ text: message.message, timestamp }, ...(prevMessages[message.id]?.messages || [])]
+          }
+        }));
+      }
     };
-
+  
     return () => {
       webSocket.close();
     };

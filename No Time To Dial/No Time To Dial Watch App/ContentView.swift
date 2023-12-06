@@ -14,7 +14,7 @@ struct ContentView: View {
         NavigationView {
             List(model.devices.keys.sorted(), id: \.self) { deviceUUID in
                 NavigationLink(destination: MessageDetailView(deviceUUID: deviceUUID, messages: model.devices[deviceUUID] ?? [])) {
-                    Text("Device: \(deviceUUID)")
+                    Text(model.deviceNames[deviceUUID] ?? "Device: \(deviceUUID)")
                 }
             }
             .navigationTitle("Connected Devices")
@@ -22,9 +22,11 @@ struct ContentView: View {
     }
 }
 
+
 struct MessageDetailView: View {
     var deviceUUID: String
     var messages: [TimestampedMessage]
+    @EnvironmentObject var model: ItemListModel
 
     var body: some View {
         List(messages, id: \.id) { timestampedMessage in
@@ -35,7 +37,7 @@ struct MessageDetailView: View {
                     .foregroundColor(.gray)
             }
         }
-        .navigationTitle("Messages from \(deviceUUID)")
+        .navigationTitle("Messages from \(model.deviceNames[deviceUUID] ?? deviceUUID)")
     }
 
     private var dateFormatter: DateFormatter {
@@ -45,7 +47,6 @@ struct MessageDetailView: View {
         return formatter
     }
 }
-
 #Preview {
     ContentView()
 }
