@@ -18,17 +18,42 @@ enum states {
   wait1,
   wait2,
   wait3,
+  wait4,
+  wait5,
   msg_1,
   msg_2,
   msg_3,
-  msg_4
+  msg_4,
+  msg_5,
+  msg_6,
+  msg_7,
+  msg_8,
+  msg_9,
+  msg_10
 };
-const int n_actions = vertical_shake+1;
-const int n_states = msg_4+1;
-int target_hist[n_states];
-String target_map[n_actions] = {"neutral", "clockwise", "counterclockwise", "horizontal_shake", "vertical_shake"};
-String state_map[n_states] = {"wait1", "wait2", "wait3", "omw", "omw 5 min", "omw 15 min", "omw 30 min"};
 
+#define STATE_IS_A_MESSAGE(state) (state >= msg_1 && state <= msg_10)
+
+const int n_states = msg_10+1;
+const int n_actions = vertical_shake+1;
+String action_map[n_actions] = {"neutral", "clockwise", "counterclockwise", "horizontal_shake", "vertical_shake"};
+String state_map[n_states] = {
+    "wait1",
+    "wait2",
+    "wait3",
+    "wait4",
+    "wait5",
+    "omw",
+    "driving",
+    "busy",
+    "omw 5 min",
+    "omw 15 min",
+    "omw 30 min",
+    "yes",
+    "no",
+    "brb",
+    "I love ECEM119"
+};
 
 int map_prediction(String prediction) {
   int target;
@@ -49,7 +74,8 @@ int map_prediction(String prediction) {
 }
 
 int state = wait1;
-int s0 = -1, s1 = -1, s2 = -1;
+int s0 = -1, s1 = -1, s2 = -1, s3=-1;
+int target_hist[n_states];
 
 int detect_gesture(int target) {
   buffer[buf_idx%N] = target;
@@ -68,18 +94,22 @@ int detect_gesture(int target) {
         curr_target = i;
       }
     }
-    Serial.println(target_map[curr_target]);
+    Serial.println(action_map[curr_target]);
 
     // All state transition changes require neutral-[some non-neutral state]-neutral
-    if(state == msg_1 || state == msg_2 || state == msg_3 || state == msg_4)
+    if(STATE_IS_A_MESSAGE(state)) {
       state = wait1;
+    //   while(1);/
+    }
     if(curr_target != prev_target) {
+    //   s0 = s1;
       s0 = s1;
       s1 = prev_target;
       s2 = curr_target;
       Serial.print(s0);
       Serial.print(s1);
-      Serial.println(s2);
+      Serial.print(s2);
+      Serial.println(s3);
 
       if(state == wait1) {
         if(s0 == neutral && s1 == clockwise && s2 == neutral)
@@ -93,10 +123,26 @@ int detect_gesture(int target) {
       }
       else if(state == wait3) {
         if(s0 == neutral && s1 != neutral && s2 == neutral) {
-          if(s1 == clockwise) state = msg_1;
+          if(s1 == clockwise)             state = msg_1;
           else if(s1 == counterclockwise) state = msg_2;
-          else if(s1 == vertical_shake) state = msg_3;
-          else if(s1 == horizontal_shake) state = msg_4;
+          else if(s1 == vertical_shake)   state = wait3;
+          else if(s1 == horizontal_shake) state = wait4;
+        }
+      }
+      else if(state == wait4) {
+        if(s0 == neutral && s1 != neutral && s2 == neutral) {
+            if     (s1 == clockwise)        state = msg_3;
+            else if(s1 == counterclockwise) state = msg_4;
+            else if(s1 == vertical_shake)   state = msg_5;
+            else if(s1 == horizontal_shake) state = msg_6;
+        }
+      }
+      else if(state == wait5) {
+        if(s0 == neutral && s1 != neutral && s2 == neutral) {
+            if     (s1 == clockwise)        state = msg_7;
+            else if(s1 == counterclockwise) state = msg_8;
+            else if(s1 == vertical_shake)   state = msg_9;
+            else if(s1 == horizontal_shake) state = msg_10;
         }
       }
     }
@@ -109,5 +155,6 @@ int detect_gesture(int target) {
 }
 
 bool state_is_message(int state) {
-  return state == msg_1 || state == msg_2 || state == msg_3 || state == msg_4;
+//   return state == msg_1 || state == msg_2 || state == msg_3 || state == msg_4;
+    return STATE_IS_A_MESSAGE(state);
 }
