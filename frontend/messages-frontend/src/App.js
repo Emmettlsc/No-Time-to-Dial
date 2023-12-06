@@ -19,6 +19,14 @@ function App() {
 
   const saveName = (deviceId, newName) => {
     setNameMappings(prev => ({ ...prev, [deviceId]: newName }));
+    setEditMode(false);
+
+    // Send the name update to the server
+    const nameUpdateMessage = JSON.stringify({
+      uuid: deviceId,
+      name: newName
+    });
+    webSocket.send(nameUpdateMessage);
   };
 
 

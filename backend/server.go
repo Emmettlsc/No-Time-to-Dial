@@ -37,48 +37,64 @@ type ClientMessage struct {
 	Message string `json:"message"`
 }
 
+// NameUpdate represents a name update message
+type NameUpdate struct {
+	UUID string `json:"uuid"`
+	Name string `json:"name"`
+}
+
 func echo(w http.ResponseWriter, r *http.Request) {
-	conn, err := upgrader.Upgrade(w, r, nil)
-	if err != nil {
-		log.Print("upgrade:", err)
-		return
-	}
-	defer conn.Close()
+    conn, err := upgrader.Upgrade(w, r, nil)
+    if err != nil {
+        log.Print("upgrade:", err)
+        return
+    }
+    defer conn.Close()
 
-	tmpid, _ := uuid.NewUUID()
+    tmpid, _ := uuid.NewUUID()
 
-	cl := &client{conn: conn, send: make(chan []byte, 256), id: tmpid}
-	mu.Lock()
-	clients[cl] = true
-	mu.Unlock()
+    cl := &client{conn: conn, send: make(chan []byte, 256), id: tmpid}
+    mu.Lock()
+    clients[cl] = true
+    mu.Unlock()
 
-	go writePump(cl)
+    go writePump(cl)
 
-	for {
-		_, message, err := conn.ReadMessage()
-		if err != nil {
-			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
-				log.Printf("error: %v", err)
-			}
-			break
-		}
-		//create JSON obj w/ ID and message (letter in case of morse)
-		clientMessage := ClientMessage{
-			ID:      cl.id.String(),
-			Message: string(message),
-		}
-		jsonMessage, err := json.Marshal(clientMessage)
-		if err != nil {
-			log.Printf("json marshal error: %v", err)
-			continue
-		}
-		broadcast <- jsonMessage
-	}
+    for {
+        _, message, err := conn.ReadMessage()
+        if err != nil {
+            if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
+                log.Printf("error: %v", err)
+            }
+            break
+        }
 
-	mu.Lock()
-	delete(clients, cl)
-	close(cl.send)
-	mu.Unlock()
+        // Attempt to unmarshal message as a name update
+        var nameUpdate NameUpdate
+        if err := json.Unmarshal(message, &nameUpdate); err == nil && nameUpdate.UUID != "" {
+            // Handle name update
+            // Broadcast the name update to all clients
+            broadcast <- message
+            continue
+        }
+
+        // Handle as a normal message if not a name update
+        clientMessage := ClientMessage{
+            ID:      cl.id.String(),
+            Message: string(message),
+        }
+        jsonMessage, err := json.Marshal(clientMessage)
+        if err != nil {
+            log.Printf("json marshal error: %v", err)
+            continue
+        }
+        broadcast <- jsonMessage
+    }
+
+    mu.Lock()
+    delete(clients, cl)
+    close(cl.send)
+    mu.Unlock()
 }
 
 func handleMessages() {
