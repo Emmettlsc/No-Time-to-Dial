@@ -1,5 +1,5 @@
-#ifndef UUID1380823444560
-#define UUID1380823444560
+#ifndef UUID1764054805008
+#define UUID1764054805008
 
 #include <cstring>
 
@@ -7,8 +7,8 @@
 namespace ContinousMotionPipeline {
 
     
-        #ifndef UUID1378773095440
-#define UUID1378773095440
+        #ifndef UUID1764147587664
+#define UUID1764147587664
 
 /**
   * MinMaxScaler(low=0, high=1)
@@ -36,8 +36,8 @@ class Step0 {
 
     protected:
         
-    float offset[6] = {-1.78000000000f, -2.68000000000f, -4.00000000000f, -980.35000000000f, -336.43000000000f, -471.92000000000f};
-    float scale[6] = {0.30864197531f, 0.14970059880f, 0.16891891892f, 0.00038965846f, 0.00163625951f, 0.00128070490f};
+    float offset[6] = {-1.28000000000f, -2.25000000000f, -2.04000000000f, -1058.96000000000f, -209.11000000000f, -245.97000000000f};
+    float scale[6] = {0.46082949309f, 0.17006802721f, 0.20449897751f, 0.00043942523f, 0.00212282676f, 0.00195304871f};
 
 };
 
@@ -45,8 +45,8 @@ class Step0 {
 
 #endif
     
-        #ifndef UUID1378752656144
-#define UUID1378752656144
+        #ifndef UUID1764138081552
+#define UUID1764138081552
 
 /**
   * Window(length=104, shift=31)
@@ -91,8 +91,8 @@ class Step1 {
 
 #endif
     
-        #ifndef UUID1378747900368
-#define UUID1378747900368
+        #ifndef UUID1764096780880
+#define UUID1764096780880
 
 /**
   * SpectralFeatures(num_inputs=6, window_length=104, order=2, num_features=20)
