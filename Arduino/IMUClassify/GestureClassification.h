@@ -3,7 +3,6 @@ const int N = 4;
 int buffer[N];
 int curr_target = -1;
 int prev_target = -1;
-int prev_prev_target = -1;
 
 enum actions {
   error = -1,
@@ -74,7 +73,7 @@ int map_prediction(String prediction) {
 }
 
 int state = wait1;
-int s0 = -1, s1 = -1, s2 = -1, s3=-1;
+int s0 = -1, s1 = -1, s2 = -1;
 int target_hist[n_states];
 
 int detect_gesture(int target) {
@@ -97,19 +96,15 @@ int detect_gesture(int target) {
     Serial.println(action_map[curr_target]);
 
     // All state transition changes require neutral-[some non-neutral state]-neutral
-    if(STATE_IS_A_MESSAGE(state)) {
+    if(STATE_IS_A_MESSAGE(state))
       state = wait1;
-    //   while(1);/
-    }
     if(curr_target != prev_target) {
-    //   s0 = s1;
       s0 = s1;
       s1 = prev_target;
       s2 = curr_target;
-      Serial.print(s0);
-      Serial.print(s1);
-      Serial.print(s2);
-      Serial.println(s3);
+    //   Serial.print(s0);
+    //   Serial.print(s1);
+    //   Serial.println(s2);
 
       if(state == wait1) {
         if(s0 == neutral && s1 == clockwise && s2 == neutral)
@@ -125,11 +120,11 @@ int detect_gesture(int target) {
         if(s0 == neutral && s1 != neutral && s2 == neutral) {
           if(s1 == clockwise)             state = msg_1;
           else if(s1 == counterclockwise) state = msg_2;
-          else if(s1 == vertical_shake)   state = wait3;
-          else if(s1 == horizontal_shake) state = wait4;
+          else if(s1 == vertical_shake)   state = wait4;
+          else if(s1 == horizontal_shake) state = wait5;
         }
       }
-      else if(state == wait4) {
+      else if(state == wait4) { // length-2 gestures
         if(s0 == neutral && s1 != neutral && s2 == neutral) {
             if     (s1 == clockwise)        state = msg_3;
             else if(s1 == counterclockwise) state = msg_4;
@@ -137,7 +132,7 @@ int detect_gesture(int target) {
             else if(s1 == horizontal_shake) state = msg_6;
         }
       }
-      else if(state == wait5) {
+      else if(state == wait5) { // length-2 gestures
         if(s0 == neutral && s1 != neutral && s2 == neutral) {
             if     (s1 == clockwise)        state = msg_7;
             else if(s1 == counterclockwise) state = msg_8;
@@ -155,6 +150,5 @@ int detect_gesture(int target) {
 }
 
 bool state_is_message(int state) {
-//   return state == msg_1 || state == msg_2 || state == msg_3 || state == msg_4;
     return STATE_IS_A_MESSAGE(state);
 }
