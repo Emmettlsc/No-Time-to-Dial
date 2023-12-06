@@ -24,6 +24,13 @@ struct ParsedMessage: Identifiable, Decodable, Hashable {
     let id: UUID
     var message: String
 }
+
+struct TimestampedMessage: Identifiable, Hashable {
+    let id = UUID()
+    let message: String
+    let timestamp: Date
+}
+
 //struct ParsedMessage: Identifiable, Decodable, Hashable {
 //    let id: UUID
 //    var deviceName: String
@@ -42,31 +49,28 @@ struct ListItem: Identifiable, Hashable {
 }
 
 class ItemListModel: NSObject, ObservableObject {
-    @Published var items = [String: String]()
-    @Published var devices = [String: [String]]() // Changed from 'items' to 'devices'
+    @Published var devices = [String: [TimestampedMessage]]() // Updated to use TimestampedMessage
 
-    
     private var websocketManager: WebSocketManager?
 
     override init() {
-           super.init()
-           websocketManager = WebSocketManager { [weak self] receivedJSON in
-               guard let self = self,
-                     let data = receivedJSON.data(using: .utf8),
-                     let parsedMessage = try? JSONDecoder().decode(ParsedMessage.self, from: data) else {
-                   return
-               }
-               DispatchQueue.main.async {
-                   let deviceName = "test"//parsedMessage.deviceName
-                   if var existingMessages = self.devices[deviceName] {
-                       existingMessages.append(parsedMessage.message)
-                       self.devices[deviceName] = existingMessages
-                   } else {
-                       self.devices[deviceName] = [parsedMessage.message]
-                   }
-               }
-           }
-           websocketManager?.connect()
+        super.init()
+        websocketManager = WebSocketManager { [weak self] receivedJSON in
+            guard let self = self,
+                  let data = receivedJSON.data(using: .utf8),
+                  let parsedMessage = try? JSONDecoder().decode(ParsedMessage.self, from: data) else {
+                return
+            }
+            let timestampedMessage = TimestampedMessage(message: parsedMessage.message, timestamp: Date())
+            
+            DispatchQueue.main.async {
+                let deviceUUID = parsedMessage.id.uuidString // Use UUID as key
+                var messages = self.devices[deviceUUID, default: []]
+                messages.insert(timestampedMessage, at: 0) // Insert new message at the beginning
+                self.devices[deviceUUID] = messages
+            }
+        }
+        websocketManager?.connect()
     }
 
 

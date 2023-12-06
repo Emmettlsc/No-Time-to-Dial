@@ -8,27 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject private var model: ItemListModel
+    @EnvironmentObject var model: ItemListModel
 
     var body: some View {
-        List {
-            ForEach(model.devices.keys.sorted(), id: \.self) { deviceName in
-                Section(header: Text("Device: \(deviceName)")) {
-                    ForEach(model.devices[deviceName] ?? [], id: \.self) { message in
-                        Text(message)
-                    }
+        NavigationView {
+            List(model.devices.keys.sorted(), id: \.self) { deviceUUID in
+                NavigationLink(destination: MessageDetailView(deviceUUID: deviceUUID, messages: model.devices[deviceUUID] ?? [])) {
+                    Text("Device: \(deviceUUID)")
                 }
             }
-            
-            if model.devices.isEmpty {
-                Text("No Current Messages")
-                    .foregroundStyle(.gray)
-            }
+            .navigationTitle("Connected Devices")
         }
-        .navigationTitle("Connections")
     }
 }
 
+struct MessageDetailView: View {
+    var deviceUUID: String
+    var messages: [TimestampedMessage]
+
+    var body: some View {
+        List(messages, id: \.id) { timestampedMessage in
+            VStack(alignment: .leading) {
+                Text(timestampedMessage.message)
+                Text("\(timestampedMessage.timestamp, formatter: dateFormatter)")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
+        }
+        .navigationTitle("Messages from \(deviceUUID)")
+    }
+
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }
+}
 
 #Preview {
     ContentView()
