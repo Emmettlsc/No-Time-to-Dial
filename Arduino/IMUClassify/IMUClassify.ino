@@ -5,6 +5,29 @@
 #include "Classifier.h"
 #include "GestureClassification.h"
 
+#define _WEBSOCKETS_LOGLEVEL_ 2
+#define WEBSOCKETS_NETWORK_TYPE NETWORK_WIFININA
+
+#include <WiFiNINA_Generic.h>
+#include <Arduino_LSM6DS3.h>
+#include <WebSocketsClient_Generic.h>
+
+WebSocketsClient webSocket;
+
+int status = WL_IDLE_STATUS;
+
+#define USE_SSL false
+// #define WS_SERVER asd          "ec.bazzled.com"
+#define WS_SERVER "184.72.14.50"
+#define WS_PORT 8080
+
+char ssid[] = "UCLA_WEB";
+char pass[] = "";
+
+bool alreadyConnected = false;
+
+unsigned long startTime;
+
 // int buf_idx = 0;
 // const int N = 4;
 // int buffer[N];
@@ -16,12 +39,50 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Started");
 
+  // check for the WiFi module:
+  if (WiFi.status() == WL_NO_MODULE) {
+    Serial.println("Communication with WiFi module failed!");
+
+    // don't continue
+    while (true)
+      ;
+  }
+
+  // attempt to connect to Wifi network:
+  while (status != WL_CONNECTED) {
+    Serial.print("Attempting to connect to SSID: ");
+    Serial.println(ssid);
+    // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
+    status = WiFi.begin(ssid, pass);
+
+    // wait 3 seconds for connection:
+    delay(3000);
+  }
+
+    printWifiStatus();
+
+  // server address, port and URL
+  Serial.print("WebSockets Server : ");
+  Serial.println(WS_SERVER);
+
+  // server address, port and URL
+  webSocket.begin(WS_SERVER, WS_PORT, "/ws");
+
+  // event handler
+  webSocket.onEvent(webSocketEvent);
+
+  // server address, port and URL
+  Serial.print("Connected to WebSockets Server @ ");
+  Serial.println(WS_SERVER);
+
+
   while (!IMU.begin()) 
     Serial.println("Failed to initialize IMU!");
 
   Serial.print("Accelerometer sample rate = ");
   Serial.print(IMU.accelerationSampleRate());
   Serial.println("Hz");
+  startTime = millis();
 }
 
 // enum actions {
@@ -129,42 +190,115 @@ void setup() {
 
 void loop() {
   float ax, ay, az, gx, gy, gz;
+  webSocket.loop();
+
+  static unsigned long lastSendTime = 0;
+  unsigned long currentMillis = millis();
+
+  //data send every ,1 secs
   
-  // await for data
-  if (!IMU.accelerationAvailable() || !IMU.gyroscopeAvailable())
-    return;
-    
-  IMU.readAcceleration(ax, ay, az);
-  IMU.readGyroscope(gx, gy, gz);
+    // await for data
+    if (!IMU.accelerationAvailable() || !IMU.gyroscopeAvailable())
+      return;
+      
+    IMU.readAcceleration(ax, ay, az);
+    IMU.readGyroscope(gx, gy, gz);
 
-  // perform feature extraction
-  float features[] = {ax, ay, az, gx, gy, gz};
-    
-  if (!pipeline.transform(features))
-    return;
-    
-  // perform classification
-  String prediction = forest.predictLabel(pipeline.X);
-  int target = map_prediction(prediction);
-  if(target < 0) {
-    Serial.print("Error\n");
-    while(1);
-  }
-  int state = detect_gesture(target);
-  // if(state == msg_1 || state == msg_2 || state == msg_3 || state == msg_4) {
-  if(state_is_message(state)) {
-    // TODO: add web socket link here
-    // state_map[state] returns is an array of strings that gives the message to be sent like a hash table
-    Serial.print("------ Message: ");
-    Serial.print(state_map[state]);
-    Serial.println("-------");
-  }
+    // perform feature extraction
+    float features[] = {ax, ay, az, gx, gy, gz};
+      
+    if (!pipeline.transform(features))
+      return;
+      
+    // perform classification
+    String prediction = forest.predictLabel(pipeline.X);
+    int target = map_prediction(prediction);
+    if(target < 0) {
+      Serial.print("Error\n");
+      while(1);
+    }
+    int state = detect_gesture(target);
+    // if(state == msg_1 || state == msg_2 || state == msg_3 || state == msg_4) {
+    if(state_is_message(state)) {
+      // TODO: add web socket link here
+      // state_map[state] returns is an array of strings that gives the message to be sent like a hash table
+      Serial.print("------ Message: ");
+      Serial.print(state_map[state]);
+      webSocket.sendTXT(String(state_map[state]));
+      Serial.println("-------");
+    }
 
-  Serial.print("Predicted gesture: ");
-  Serial.print(prediction);
-  Serial.print(" (DSP: ");
-  Serial.print(pipeline.latencyInMicros());
-  Serial.print(" micros, Classifier: ");
-  Serial.print(forest.latencyInMicros());
-  Serial.println(" micros)");
+    Serial.print("Predicted gesture: ");
+    Serial.print(prediction);
+    Serial.print(" (DSP: ");
+    Serial.print(pipeline.latencyInMicros());
+    Serial.print(" micros, Classifier: ");
+    Serial.print(forest.latencyInMicros());
+    Serial.println(" micros)");
+}
+
+void webSocketEvent(const WStype_t& type, uint8_t* payload, const size_t& length) {
+  switch (type) {
+    case WStype_DISCONNECTED:
+      if (alreadyConnected) {
+        Serial.println("[WSc] Disconnected!");
+        alreadyConnected = false;
+      }
+      break;
+
+    case WStype_CONNECTED:
+      {
+        alreadyConnected = true;
+        Serial.print("[WSc] Connected to url: ");
+        Serial.println((char*)payload);
+        // send a message to server when Connected
+        webSocket.sendTXT("Connected");
+      }
+      break;
+
+    case WStype_TEXT:
+      // Log the received text message
+      Serial.print("[WSc] Received text: ");
+      Serial.println((char *) payload);
+      //Should be NONE
+      break;
+
+    case WStype_BIN:
+      // Log binary messages (if needed)
+      Serial.print("[WSc] Received binary length: ");
+      Serial.println(length);
+      // Should be NONE
+      break;
+
+    case WStype_PING:
+      // Log ping messages (if needed)
+      Serial.println("[WSc] Received ping");
+      break;
+
+    case WStype_PONG:
+      // Log pong messages (if needed)
+      Serial.println("[WSc] Received pong");
+      break;
+
+    default:
+      break;
+  }
+}
+
+
+void printWifiStatus() {
+  // print the SSID of the network you're attached to:
+  Serial.print("SSID: ");
+  Serial.println(WiFi.SSID());
+
+  // print your board's IP address:
+  IPAddress ip = WiFi.localIP();
+  Serial.print("WebSockets Client IP Address: ");
+  Serial.println(ip);
+
+  // print the received signal strength:
+  long rssi = WiFi.RSSI();
+  Serial.print("signal strength (RSSI):");
+  Serial.print(rssi);
+  Serial.println(" dBm");
 }
