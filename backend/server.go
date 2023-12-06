@@ -114,7 +114,7 @@ func writePump(cl *client) {
 func main() {
 	flag.Parse()
 	log.SetFlags(0)
-	http.HandleFunc("/echo", echo)
+	http.HandleFunc("/ws", echo)
 	go handleMessages()
 
 	log.Fatal(http.ListenAndServe(*addr, nil))
