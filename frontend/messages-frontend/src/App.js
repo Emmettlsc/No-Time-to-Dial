@@ -4,6 +4,8 @@ import './App.css';
 import MessagesList from './MessagesList';
 import DeviceHeader from './DeviceHeader';
 
+// Add a reference to the WebSocket connection outside the useEffect
+let webSocket;
 
 function App() {
   const [messages, setMessages] = useState({});
@@ -31,7 +33,7 @@ function App() {
 
 
   useEffect(() => {
-    const webSocket = new WebSocket('ws://184.72.14.50:8080/ws');
+    webSocket = new WebSocket('ws://184.72.14.50:8080/ws');
 
     webSocket.onmessage = (event) => {
       const message = JSON.parse(event.data);

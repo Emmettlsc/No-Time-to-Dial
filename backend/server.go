@@ -73,8 +73,12 @@ func echo(w http.ResponseWriter, r *http.Request) {
         var nameUpdate NameUpdate
         if err := json.Unmarshal(message, &nameUpdate); err == nil && nameUpdate.UUID != "" {
             // Handle name update
-            // Broadcast the name update to all clients
-            broadcast <- message
+            updatedMessage, err := json.Marshal(nameUpdate)
+            if err != nil {
+                log.Printf("json marshal error: %v", err)
+                continue
+            }
+            broadcast <- updatedMessage
             continue
         }
 
